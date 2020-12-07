@@ -61,7 +61,7 @@
             android:id="@+id/schools_nearby"
             android:layout_alignParentBottom="true"
             android:onClick="onClick"
-            android:layout_toEndOf="@+id/hospital_nearby"
+            android:layout_toEndOf="@+id/hospitals_nearby"
             android:src="@mipmap/school"/>
 
         <ImageButton

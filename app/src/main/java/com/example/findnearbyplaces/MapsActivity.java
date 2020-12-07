@@ -131,38 +131,38 @@ public class MapsActivity extends FragmentActivity implements
                 Toast.makeText(this, "Showing  Nearby Hospital", Toast.LENGTH_SHORT).show();
                 break;
 
-//            case R.id.schools_nearby:
-//                mMap.clear();
-//                url = getUrl(latitude,longitude,school);
-//                transferData[0] = mMap;
-//                transferData[1]= url;
-//
-//                getNearbyPlaces.execute(transferData);
-//                Toast.makeText(this, "Searching For Nearby Schools", Toast.LENGTH_SHORT).show();
-//                Toast.makeText(this, "Showing  Nearby Schools", Toast.LENGTH_SHORT).show();
-//                break;
-//
-//            case R.id.restaurants_nearby:
-//                mMap.clear();
-//                url = getUrl(latitude,longitude,restaurant);
-//                transferData[0] = mMap;
-//                transferData[1]= url;
+            case R.id.schools_nearby:
+                mMap.clear();
+                url = getUrl(latitude,longitude,school);
+                transferData[0] = mMap;
+                transferData[1]= url;
 
-//                getNearbyPlaces.execute(transferData);
-//                Toast.makeText(this, "Searching For Nearby Restaurant", Toast.LENGTH_SHORT).show();
-//                Toast.makeText(this, "Showing  Nearby Restaurant", Toast.LENGTH_SHORT).show();
-//                break;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Searching For Nearby Schools", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Showing  Nearby Schools", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.restaurants_nearby:
+                mMap.clear();
+                url = getUrl(latitude,longitude,restaurant);
+                transferData[0] = mMap;
+                transferData[1]= url;
+
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Searching For Nearby Restaurant", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Showing  Nearby Restaurant", Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 
     private String getUrl(double latitude,double longitude, String nearbyPlace)
     {
-        StringBuilder googleURL = new StringBuilder("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?");
+        StringBuilder googleURL = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
         googleURL.append("location="+ latitude+"," + longitude);
         googleURL.append("&radius=" + ProximityRadius);
         googleURL.append("&type=" + nearbyPlace);
         googleURL.append("&sensor=true");
-        googleURL.append("&key=" + "AIzaSyDtIWXQDUAlufc_Vff3qbz522Dnz26Nk9w");
+        googleURL.append("&key=" + "AIzaSyAw0xwmHzKTiMwNGmGgpTRjoKncukegcbQ");
 
         Log.d("GoogleMapsActivity", "url = "+ googleURL.toString());
 
