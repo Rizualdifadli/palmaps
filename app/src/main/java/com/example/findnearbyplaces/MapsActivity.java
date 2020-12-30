@@ -17,6 +17,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -34,6 +35,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements
@@ -49,7 +51,7 @@ public class MapsActivity extends FragmentActivity implements
     private Marker currentUserLocationMarker;
     private  static final int Request_User_Location_Code = 99;
     private  double latitude, longitude;
-    private int ProximityRadius = 10000;
+    private int ProximityRadius = 50000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +70,11 @@ public class MapsActivity extends FragmentActivity implements
 
     public void  onClick (View v)
     {
-        String hospital = "hospital", school="school", restaurant ="restaurant";
+        String hospital = "hospital", school="school", restaurant ="restaurant", mosque ="mosque", atm = "atm",train_station="train_station"
+                ,airport = "airport",bank="bank",bus="bus",buying="buying",car_service="car_service",car_wash="car_wash",church="church"
+                ,convenience_store="convenience_store",doctor="doctor",gas="gas",hindu="hindu",library="library",museum="museum",park="park"
+                ,pharmacy="pharmacy",police="police",post="post",stadium="stadium",shopping_mall="shopping_mall",theme_park="theme_park",university="university"
+                ,zoo="zoo";
         Object transferData[] = new  Object[2];
         GetNearbyPlaces getNearbyPlaces = new GetNearbyPlaces();
 
@@ -99,13 +105,13 @@ public class MapsActivity extends FragmentActivity implements
                                 userMarkerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
                                 mMap.addMarker(userMarkerOptions);
                                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                                mMap.animateCamera(CameraUpdateFactory.zoomTo(7));
+                                mMap.animateCamera(CameraUpdateFactory.zoomTo(13));
                             }
                         }
 
                         else
                         {
-                            Toast.makeText(this, "Location Not Found....", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Your Search Location Not Found", Toast.LENGTH_SHORT).show();
                         }
                     }
                     catch (IOException e)
@@ -127,8 +133,8 @@ public class MapsActivity extends FragmentActivity implements
                 transferData[1]= url;
 
                 getNearbyPlaces.execute(transferData);
-                Toast.makeText(this, "Searching For Nearby Hospital", Toast.LENGTH_SHORT).show();
-                Toast.makeText(this, "Showing  Nearby Hospital", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Sedang Mencari Rumah Sakit Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Rumah Sakit Di Sekitar Anda", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.schools_nearby:
@@ -136,10 +142,9 @@ public class MapsActivity extends FragmentActivity implements
                 url = getUrl(latitude,longitude,school);
                 transferData[0] = mMap;
                 transferData[1]= url;
-
                 getNearbyPlaces.execute(transferData);
-                Toast.makeText(this, "Searching For Nearby Schools", Toast.LENGTH_SHORT).show();
-                Toast.makeText(this, "Showing  Nearby Schools", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Sedang Mencari Sekolah Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Sekolah Di Sekitar Anda", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.restaurants_nearby:
@@ -147,10 +152,272 @@ public class MapsActivity extends FragmentActivity implements
                 url = getUrl(latitude,longitude,restaurant);
                 transferData[0] = mMap;
                 transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Restaurant Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Restaurant Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.mosque_nearby:
+                mMap.clear();
+                url = getUrl(latitude,longitude,mosque);
+                transferData[0] = mMap;
+                transferData[1]= url;
 
                 getNearbyPlaces.execute(transferData);
-                Toast.makeText(this, "Searching For Nearby Restaurant", Toast.LENGTH_SHORT).show();
-                Toast.makeText(this, "Showing  Nearby Restaurant", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Sedang Mencari Masjid Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Masjid Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.atm_nearby:
+                mMap.clear();
+                url = getUrl(latitude,longitude,atm);
+                transferData[0] = mMap;
+                transferData[1]= url;
+
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari ATM Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan ATM Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.train_station:
+                mMap.clear();
+                url = getUrl(latitude,longitude,train_station);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Stasiun Kerata Api Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Stasiun Kerata Api Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.airport:
+                mMap.clear();
+                url = getUrl(latitude,longitude,airport);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Bandara Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Bandara Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+            //                bermasalah
+
+            case R.id.bank:
+                mMap.clear();
+                url = getUrl(latitude,longitude,bank);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Bank Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Bank Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.bus_station:
+                mMap.clear();
+                url = getUrl(latitude,longitude,bus);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Halte Bus Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Halte Bus Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+//                bermasalah
+
+            case R.id.buying:
+                mMap.clear();
+                url = getUrl(latitude,longitude,buying);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari SuperMarket Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan SuperMarket Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+            //                bermasalah
+
+            case R.id.car_service:
+                mMap.clear();
+                url = getUrl(latitude,longitude,car_service);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Car Service Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Car Service Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+            //                bermasalah
+
+            case R.id.car_wash:
+                mMap.clear();
+                url = getUrl(latitude,longitude,car_wash);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Steam Mobil Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Steam Mobil Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.church:
+                mMap.clear();
+                url = getUrl(latitude,longitude,church);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Gereja Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Gereja Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.convenience_store:
+                mMap.clear();
+                url = getUrl(latitude,longitude,convenience_store);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Toko Serba Ada Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Toko Serba Ada Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.doctor:
+                mMap.clear();
+                url = getUrl(latitude,longitude,doctor);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Doktor Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Doktor Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.gas:
+                mMap.clear();
+                url = getUrl(latitude,longitude,gas);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari SPBU Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan SPBU Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+            //                bermasalah
+
+            case R.id.hindu:
+                mMap.clear();
+                url = getUrl(latitude,longitude,hindu);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Vihara Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Vihara Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+            //                bermasalah
+
+            case R.id.library:
+                mMap.clear();
+                url = getUrl(latitude,longitude,library);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Perpustakaan Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Perpustakaan Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+            //                bermasalah
+
+            case R.id.museum:
+                mMap.clear();
+                url = getUrl(latitude,longitude,museum);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Museum Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Museum Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.park:
+                mMap.clear();
+                url = getUrl(latitude,longitude,park);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Taman Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Taman Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.pharmacy:
+                mMap.clear();
+                url = getUrl(latitude,longitude,pharmacy);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Farmasi Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Farmasi Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.police:
+                mMap.clear();
+                url = getUrl(latitude,longitude,police);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Kantor Polisi Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Kantor Polisi Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.post:
+                mMap.clear();
+                url = getUrl(latitude,longitude,post);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Kantor Pos Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Kantor Pos Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+            //                bermasalah
+
+            case R.id.shopping_mall:
+                mMap.clear();
+                url = getUrl(latitude,longitude,shopping_mall);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Pusat Perbelanjaan Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Pusat Perbelanjaan Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+            //                bermasalah Toko bukan Mall
+
+            case R.id.stadium:
+                mMap.clear();
+                url = getUrl(latitude,longitude,stadium);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Stadion Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Stadion Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.theme_park:
+                mMap.clear();
+                url = getUrl(latitude,longitude,theme_park);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Taman Bermain Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Taman Bermain Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+            //                bermasalah
+
+            case R.id.university:
+                mMap.clear();
+                url = getUrl(latitude,longitude,university);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Universitas Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Universitas Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                break;
+            //                bermasalah
+
+            case R.id.zoo:
+                mMap.clear();
+                url = getUrl(latitude,longitude,zoo);
+                transferData[0] = mMap;
+                transferData[1]= url;
+                getNearbyPlaces.execute(transferData);
+                Toast.makeText(this, "Sedang Mencari Kebun Binatang Di Sekitar Anda", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Menampilkan Kebun Binatang Di Sekitar Anda", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
@@ -162,7 +429,7 @@ public class MapsActivity extends FragmentActivity implements
         googleURL.append("&radius=" + ProximityRadius);
         googleURL.append("&type=" + nearbyPlace);
         googleURL.append("&sensor=true");
-        googleURL.append("&key=" + "AIzaSyAw0xwmHzKTiMwNGmGgpTRjoKncukegcbQ");
+        googleURL.append("&key=" + "AIzaSyBBZ3eygmersaY_b0RJ7PnO4EqJMyr_huE");
 
         Log.d("GoogleMapsActivity", "url = "+ googleURL.toString());
 
@@ -250,15 +517,10 @@ public class MapsActivity extends FragmentActivity implements
             currentUserLocationMarker.remove();
         }
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(latLng);
-        markerOptions.title("user Current Location");
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-
-        currentUserLocationMarker = mMap.addMarker(markerOptions);
+        
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomBy(5));
+        mMap.animateCamera(CameraUpdateFactory.zoomBy(13));
 
         if (googleApiClient != null)
         {

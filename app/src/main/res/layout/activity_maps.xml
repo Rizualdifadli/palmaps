@@ -15,7 +15,7 @@
             android:layout_alignParentTop="true"
             android:ems="10"
             android:textColorHint="@android:color/darker_gray"
-            android:hint="write ane place name ...."/>
+            android:hint="Cari Tempat ..."/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -35,43 +35,191 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/horizontalScrollView"
         android:layout_marginTop="50dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         tools:context=".MapsActivity" />
 
-    <RelativeLayout
-        android:id="@+id/second_relative_layout"
+    <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageButton
+        android:layout_height="wrap_content"
+        android:id="@+id/horizontalScrollView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true">
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/hospitals_nearby"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="100dp"
-            android:onClick="onClick"
-            android:src="@mipmap/hospital"/>
+            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/hospitals_nearby"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/hospital" />
+            <ImageButton
+                android:id="@+id/schools_nearby"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/school_building" />
+            <ImageButton
+                android:id="@+id/restaurants_nearby"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/restaurant"/>
+            <ImageButton
+                android:id="@+id/mosque_nearby"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/mosque" />
+            <ImageButton
+                android:id="@+id/atm_nearby"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/atm" />
+            <ImageButton
+                android:id="@+id/train_station"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/train_station" />
+            <ImageButton
+                android:id="@+id/bus_station"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/bus" />
+            <ImageButton
+                android:id="@+id/bank"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/bank" />
+            <ImageButton
+                android:id="@+id/university"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/university_campus" />
+            <ImageButton
+                android:id="@+id/airport"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/airport" />
+            <ImageButton
+                android:id="@+id/buying"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/buying"/>
+            <ImageButton
+                android:id="@+id/car_service"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/car_service"/>
+            <ImageButton
+                android:id="@+id/car_wash"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/car_wash"/>
+            <ImageButton
+                android:id="@+id/church"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/church"/>
+            <ImageButton
+                android:id="@+id/convenience_store"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/convenience_store"/>
+            <ImageButton
+                android:id="@+id/doctor"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/doctor"/>
+            <ImageButton
+                android:id="@+id/gas"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/gas_station"/>
+            <ImageButton
+                android:id="@+id/hindu"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/hindu"/>
+            <ImageButton
+                android:id="@+id/library"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/library_building"/>
+            <ImageButton
+                android:id="@+id/museum"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/museum"/>
+            <ImageButton
+                android:id="@+id/park"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/park"/>
+            <ImageButton
+                android:id="@+id/pharmacy"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/pharmacy"/>
+            <ImageButton
+                android:id="@+id/police"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/police"/>
+            <ImageButton
+                android:id="@+id/post"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/post"/>
+            <ImageButton
+                android:id="@+id/shopping_mall"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/shopping_mall"/>
+            <ImageButton
+                android:id="@+id/stadium"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/stadium"/>
+            <ImageButton
+                android:id="@+id/theme_park"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/theme_park"/>
+            <ImageButton
+                android:id="@+id/zoo"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:onClick="onClick"
+                android:src="@mipmap/zoo"/>
+        </LinearLayout>
+    </HorizontalScrollView>
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/schools_nearby"
-            android:layout_alignParentBottom="true"
-            android:onClick="onClick"
-            android:layout_toEndOf="@+id/hospitals_nearby"
-            android:src="@mipmap/school"/>
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/restaurants_nearby"
-            android:layout_alignParentBottom="true"
-            android:onClick="onClick"
-            android:layout_toEndOf="@+id/schools_nearby"
-            android:src="@mipmap/restaurant"/>
-
-    </RelativeLayout>
 </RelativeLayout>
